@@ -1,0 +1,45 @@
+import time
+
+class Car:
+    def __init__(self):
+        self.speed = 0
+
+    def set_speed(self, speed):
+        self.speed = speed
+        print(f"Setting speed to {speed} mph")
+
+    def drive(self):
+        while True:
+            print(f"Driving at {self.speed} mph")
+            time.sleep(1)
+
+class Autopilot:
+    def __init__(self, car):
+        self.car = car
+
+    def engage_autopilot(self):
+        print("Autopilot engaged")
+
+    def disengage_autopilot(self):
+        print("Autopilot disengaged")
+
+    def start_autopilot(self):
+        self.engage_autopilot()
+        self.car.set_speed(60)
+        self.car.drive()
+
+    def stop_autopilot(self):
+        self.car.set_speed(0)
+        self.disengage_autopilot()
+
+# Create a car object
+car = Car()
+
+# Create an autopilot object and associate it with the car
+autopilot = Autopilot(car)
+
+# Start the autopilot
+autopilot.start_autopilot()
+
+# Stop the autopilot
+autopilot.stop_autopilot()
